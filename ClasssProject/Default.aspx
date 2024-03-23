@@ -1,13 +1,22 @@
 ﻿
 
-<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ClasssProject._DefaultD" %>
+<%@ Page Title="Home Page"
+    Language="C#" MasterPageFile="~/Site.Master" 
+    
+    AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ClasssProject._DefaultD" %>
 
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+  <style>
+        .redLabel {
+            color: green;
+        }
+  </style>
     <script type="text/javascript">
         function handleInput(sender) {
+
             var textBoxValue = sender.value;
             // Do something with the textBoxValue
             //alert('Input changed: ' + textBoxValue);
@@ -16,10 +25,19 @@
 
         }
     </script>
+    <!-- <span><%= Request.Cookies["Username"] == null? "" : Request.Cookies["Username"].Value %></span>-->
+    
 
-     
 
-    <asp:Label runat="server" ID="myFirstASPControl"></asp:Label>
+ 
+    <span id="cookieSpan"></span>
+
+        <script type="text/javascript">
+
+            document.getElementById("cookieSpan").innerHTML = document.cookie;
+        </script>
+
+    <asp:Label CssClass="redLabel" runat="server" ID="myFirstASPControl"></asp:Label>
 
     <asp:TextBox ID="myTextInput" runat="server" oninput="handleInput(this)" > </asp:TextBox>
     
